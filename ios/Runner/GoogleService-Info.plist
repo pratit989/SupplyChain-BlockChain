@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>234209236609-l0onnuj95npsddjo0veea26r482vf50d.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.234209236609-l0onnuj95npsddjo0veea26r482vf50d</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>234209236609-2n5e86j1q50m5sp5rinhf65gkqf8o1qv.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAIR6lS5562Gd61gp6G-Wxid2cctPwindc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>234209236609</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.blockchainsupplychain.admin</string>
+	<key>PROJECT_ID</key>
+	<string>supply-chain-blockchain-79e00</string>
+	<key>STORAGE_BUCKET</key>
+	<string>supply-chain-blockchain-79e00.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:234209236609:ios:2686cdd50a417a36cd9f80</string>
+</dict>
+</plist>

@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "234209236609",
+    "project_id": "supply-chain-blockchain-79e00",
+    "storage_bucket": "supply-chain-blockchain-79e00.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:234209236609:android:72ec6edbbb954194cd9f80",
+        "android_client_info": {
+          "package_name": "com.blockchainsupplychain.admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "234209236609-2n5e86j1q50m5sp5rinhf65gkqf8o1qv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.blockchainsupplychain.admin",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "234209236609-ak6j50jjd0ak6bu5q49vaf0s51fi9ljb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDs5FqqRDix12iVQXzAe_LtIaNjaDfu1zE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "234209236609-ak6j50jjd0ak6bu5q49vaf0s51fi9ljb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "234209236609-l0onnuj95npsddjo0veea26r482vf50d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.blockchainsupplychain.admin"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
