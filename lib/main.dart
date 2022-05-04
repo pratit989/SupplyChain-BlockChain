@@ -93,7 +93,7 @@ class _MyAppState extends State<MyApp> {
             )
           : currentUser.loggedIn
               ? ProductListingWidget()
-              : AddBlockPageWidget(),
+              : HomePageWidget(),
     );
   }
 }

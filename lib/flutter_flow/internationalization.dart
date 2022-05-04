@@ -68,15 +68,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Certifier',
       'hi': 'प्रमाणकर्ता',
     },
-    '1kj3nj0d': {
+    'cm8sbc7l': {
       'en': 'Select App Language:',
       'hi': '',
     },
-    '53ata2qu': {
+    'fv7v7ssz': {
       'en': 'English',
       'hi': '',
     },
-    'zsc0gtnh': {
+    '0jxl6vzy': {
       'en': 'Hindi',
       'hi': '',
     },
@@ -99,19 +99,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Sign in with Apple',
       'hi': 'ऐप्पल के साथ साइन इन करें',
     },
-    'f6q2ct91': {
+    'it0o6fj5': {
       'en': 'Select App Language:',
       'hi': '',
     },
-    'sf64vemn': {
+    'bkpc75vb': {
       'en': 'English',
       'hi': '',
     },
-    'x8xvoly4': {
+    'mye7hcj5': {
       'en': 'Hindi',
       'hi': '',
     },
-    '35zl4qya': {
+    'zduqvsw6': {
       'en': 'Authenticate Yourself',
       'hi': '',
     },
@@ -122,54 +122,54 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ProductListing
   {
-    'v8xadtjv': {
+    'f9z1rvms': {
       'en': 'Product Listing',
       'hi': '',
     },
-    'uoasx4kc': {
+    '95qfa7oe': {
       'en': 'Create New Product Blockchain',
       'hi': '',
     },
-    'nlye7klm': {
+    'ev7vidp3': {
       'en': 'Home',
       'hi': '',
     },
   },
   // AddBlockPage
   {
-    'f9ilrzj4': {
+    'e1imdj1e': {
       'en': 'Submit',
       'hi': '',
     },
-    'ka7at2bq': {
+    'ogwtpal4': {
       'en': 'Product ID: ',
       'hi': '',
     },
-    '0r3zuybq': {
+    '7awne1iq': {
       'en': 'Key',
       'hi': '',
     },
-    'enqo1o5g': {
+    'z8z5frhm': {
       'en': 'Value',
       'hi': '',
     },
-    'csla9axe': {
+    'vrgbzvf6': {
       'en': 'Field is required',
       'hi': '',
     },
-    'q33k5f8g': {
+    '3o9iutxb': {
       'en': 'Field is required',
       'hi': '',
     },
-    '6mrtcjpg': {
+    '2qv0oeoa': {
       'en': 'Add New Data Field',
       'hi': '',
     },
-    '79mj4671': {
+    'jflwzvbc': {
       'en': 'Add Block Data',
       'hi': '',
     },
-    'l2lakqwu': {
+    'gm7b5lld': {
       'en': 'Home',
       'hi': '',
     },
