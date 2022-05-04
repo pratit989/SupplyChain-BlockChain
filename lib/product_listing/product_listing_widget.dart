@@ -246,7 +246,8 @@ class _ProductListingWidgetState extends State<ProductListingWidget> {
                           ),
                           trailing: Icon(
                             Icons.arrow_forward_ios,
-                            color: Color(0xFF303030),
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
                             size: 20,
                           ),
                           tileColor:

@@ -68,15 +68,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Certifier',
       'hi': 'प्रमाणकर्ता',
     },
-    'vfkx1fb2': {
+    '4rc6mb7t': {
       'en': 'Select App Language:',
       'hi': '',
     },
-    'its4eoqh': {
+    'x2x9o0kn': {
       'en': 'English',
       'hi': '',
     },
-    'qtl0l0tr': {
+    'rwzmvvt9': {
       'en': 'Hindi',
       'hi': '',
     },
@@ -95,19 +95,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Sign in with Apple',
       'hi': 'ऐप्पल के साथ साइन इन करें',
     },
-    '985jik64': {
+    'i5eujkty': {
       'en': 'Select App Language:',
       'hi': '',
     },
-    '2ctah11j': {
+    'zmbg8f6r': {
       'en': 'English',
       'hi': '',
     },
-    'volr0pki': {
+    'rsrdl7p0': {
       'en': 'Hindi',
       'hi': '',
     },
-    'lyp6pter': {
+    'pwh4817q': {
       'en': 'Authenticate Yourself',
       'hi': '',
     },
@@ -118,62 +118,62 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ProductListing
   {
-    'l4fzjvta': {
+    'qjneiwv9': {
       'en': 'Product Listing',
       'hi': '',
     },
-    'bh9hg1wy': {
+    '7c7jnqb2': {
       'en': 'Enter Product Name',
       'hi': '',
     },
-    'dnzkbexy': {
+    '9zjxlo1b': {
       'en': 'Field is required',
       'hi': '',
     },
-    'b23ugxll': {
+    '7kojnmxi': {
       'en': 'Create New Product Blockchain',
       'hi': '',
     },
-    '5j91s78m': {
+    'fp658dd0': {
       'en': 'Home',
       'hi': '',
     },
   },
   // AddBlockPage
   {
-    '8sze5thv': {
+    'n0ldzgrb': {
       'en': 'Submit',
       'hi': '',
     },
-    'fosmkrhq': {
+    '3uu658uv': {
       'en': 'Product ID: ',
       'hi': '',
     },
-    '4ml99igq': {
+    '7ifbg04g': {
       'en': 'Key',
       'hi': '',
     },
-    'hq12lls4': {
+    'w9govykx': {
       'en': 'Value',
       'hi': '',
     },
-    'y85wvbrh': {
+    'xqk6vfjn': {
       'en': 'Field is required',
       'hi': '',
     },
-    'law5kzoq': {
+    'b9zfhcst': {
       'en': 'Field is required',
       'hi': '',
     },
-    'vnkrzstn': {
+    'ggvdwa9c': {
       'en': 'Add New Data Field',
       'hi': '',
     },
-    'bsdwtw8w': {
+    'twzb47es': {
       'en': 'Page Title',
       'hi': '',
     },
-    'lx67tvmb': {
+    'f67pnxwt': {
       'en': 'Home',
       'hi': '',
     },
