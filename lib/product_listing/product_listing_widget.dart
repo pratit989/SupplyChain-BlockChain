@@ -3,6 +3,7 @@ import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../manage_product/manage_product_widget.dart';
 import '../custom_code/actions/index.dart' as actions;
 import '../flutter_flow/custom_functions.dart' as functions;
 import '../flutter_flow/random_data_util.dart' as random_data;
@@ -231,28 +232,41 @@ class _ProductListingWidgetState extends State<ProductListingWidget> {
                       itemBuilder: (context, listViewIndex) {
                         final listViewProductsRecord =
                             listViewProductsRecordList[listViewIndex];
-                        return ListTile(
-                          title: Text(
-                            listViewProductsRecord.productName,
-                            style: FlutterFlowTheme.of(context).title3.override(
-                                  fontFamily: 'Poppins',
-                                  color: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
+                        return InkWell(
+                          onTap: () async {
+                            await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ManageProductWidget(
+                                  productRef: listViewProductsRecord.reference,
                                 ),
+                              ),
+                            );
+                          },
+                          child: ListTile(
+                            title: Text(
+                              listViewProductsRecord.productName,
+                              style:
+                                  FlutterFlowTheme.of(context).title3.override(
+                                        fontFamily: 'Poppins',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                      ),
+                            ),
+                            subtitle: Text(
+                              listViewProductsRecord.productId,
+                              style: FlutterFlowTheme.of(context).subtitle2,
+                            ),
+                            trailing: Icon(
+                              Icons.arrow_forward_ios,
+                              color: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                              size: 20,
+                            ),
+                            tileColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            dense: false,
                           ),
-                          subtitle: Text(
-                            listViewProductsRecord.productId,
-                            style: FlutterFlowTheme.of(context).subtitle2,
-                          ),
-                          trailing: Icon(
-                            Icons.arrow_forward_ios,
-                            color:
-                                FlutterFlowTheme.of(context).primaryBackground,
-                            size: 20,
-                          ),
-                          tileColor:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          dense: false,
                         );
                       },
                     );
