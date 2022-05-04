@@ -60,7 +60,9 @@ class _BlockDataViewerWidgetState extends State<BlockDataViewerWidget> {
               },
             ),
             title: Text(
-              'Data Viewer',
+              FFLocalizations.of(context).getText(
+                '5anx59r5' /* Data Viewer */,
+              ),
               style: FlutterFlowTheme.of(context).title2.override(
                     fontFamily: 'Poppins',
                     color: FlutterFlowTheme.of(context).secondaryBackground,

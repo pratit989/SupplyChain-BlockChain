@@ -34,7 +34,9 @@ class _LoginWidgetState extends State<LoginWidget> {
             color: FlutterFlowTheme.of(context).secondaryBackground),
         automaticallyImplyLeading: true,
         title: Text(
-          'Authenticate Yourself',
+          FFLocalizations.of(context).getText(
+            'd6pu7p4l' /* Authenticate Yourself */,
+          ),
           style: FlutterFlowTheme.of(context).bodyText1.override(
                 fontFamily: 'Poppins',
                 color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -216,7 +218,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Text(
-                      'Select App Language:',
+                      FFLocalizations.of(context).getText(
+                        'k06w6ydw' /* Select App Language: */,
+                      ),
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'Poppins',
                             color:
@@ -233,7 +237,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                             onPressed: () async {
                               setAppLanguage(context, 'en');
                             },
-                            text: 'English',
+                            text: FFLocalizations.of(context).getText(
+                              'rm487tzs' /* English */,
+                            ),
                             options: FFButtonOptions(
                               width: 100,
                               height: 30,
@@ -255,7 +261,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                             onPressed: () async {
                               setAppLanguage(context, 'hi');
                             },
-                            text: 'Hindi',
+                            text: FFLocalizations.of(context).getText(
+                              'ygpwhzwx' /* Hindi */,
+                            ),
                             options: FFButtonOptions(
                               width: 100,
                               height: 30,

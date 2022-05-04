@@ -60,7 +60,9 @@ class _BlockValidityCheckWidgetState extends State<BlockValidityCheckWidget> {
               },
             ),
             title: Text(
-              'Validity Check',
+              FFLocalizations.of(context).getText(
+                '18h2bdl4' /* Validity Check */,
+              ),
               style: FlutterFlowTheme.of(context).title2.override(
                     fontFamily: 'Poppins',
                     color: FlutterFlowTheme.of(context).secondaryBackground,

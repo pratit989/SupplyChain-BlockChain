@@ -377,7 +377,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Text(
-                    'Select App Language:',
+                    FFLocalizations.of(context).getText(
+                      'nnqtkk2f' /* Select App Language: */,
+                    ),
                     style: FlutterFlowTheme.of(context).bodyText1,
                   ),
                   Padding(
@@ -390,7 +392,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                           onPressed: () async {
                             setAppLanguage(context, 'en');
                           },
-                          text: 'English',
+                          text: FFLocalizations.of(context).getText(
+                            'fm1zywu6' /* English */,
+                          ),
                           options: FFButtonOptions(
                             width: 100,
                             height: 30,
@@ -411,7 +415,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                           onPressed: () async {
                             setAppLanguage(context, 'hi');
                           },
-                          text: 'Hindi',
+                          text: FFLocalizations.of(context).getText(
+                            'tglejnp0' /* Hindi */,
+                          ),
                           options: FFButtonOptions(
                             width: 100,
                             height: 30,

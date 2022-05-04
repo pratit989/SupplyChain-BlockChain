@@ -62,19 +62,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'aj0y0udm': {
       'en': 'Other',
-      'hi': 'प्रमाणकर्ता',
+      'hi': 'अन्य',
     },
-    '1rjqr1vv': {
+    'nnqtkk2f': {
       'en': 'Select App Language:',
-      'hi': '',
+      'hi': 'ऐप भाषा चुनें:',
     },
-    '3fiqngey': {
+    'fm1zywu6': {
       'en': 'English',
-      'hi': '',
+      'hi': 'अंग्रेज़ी',
     },
-    'ir49p71k': {
+    'tglejnp0': {
       'en': 'Hindi',
-      'hi': '',
+      'hi': 'हिन्दी',
     },
     'hrgt6ijn': {
       'en': 'Home',
@@ -91,21 +91,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Sign in with Apple',
       'hi': 'ऐप्पल के साथ साइन इन करें',
     },
-    'vgc5hj36': {
+    'k06w6ydw': {
       'en': 'Select App Language:',
-      'hi': '',
+      'hi': 'ऐप भाषा चुनें:',
     },
-    '0dqhn9w0': {
+    'rm487tzs': {
       'en': 'English',
-      'hi': '',
+      'hi': 'अंग्रेज़ी',
     },
-    '84nsglx5': {
+    'ygpwhzwx': {
       'en': 'Hindi',
-      'hi': '',
+      'hi': 'हिन्दी',
     },
-    'xqmh0cf5': {
+    'd6pu7p4l': {
       'en': 'Authenticate Yourself',
-      'hi': '',
+      'hi': 'अपने आप को प्रमाणित करें',
     },
     'ga3973k1': {
       'en': 'Home',
@@ -114,121 +114,121 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ProductListing
   {
-    'a1r0vw6e': {
+    'h0r9y8gw': {
       'en': 'Product Listing',
-      'hi': '',
+      'hi': 'उत्पाद लिस्टिंग',
     },
-    'dotx7vxn': {
+    'cnxdvw0k': {
       'en': 'Enter Product Name',
-      'hi': '',
+      'hi': 'उत्पाद का नाम दर्ज करें',
     },
-    'efsj6ed5': {
+    '1rj3ahm7': {
       'en': 'Create New Product Blockchain',
-      'hi': '',
+      'hi': 'नया उत्पाद ब्लॉकचेन बनाएं',
     },
-    'ld18qew4': {
+    '5ihd66he': {
       'en': 'Field is required',
-      'hi': '',
+      'hi': 'क्षेत्र की आवश्यकता है',
     },
-    '6xgtjplv': {
+    'iictybkk': {
       'en': 'Home',
-      'hi': '',
+      'hi': 'घर',
     },
   },
   // AddBlockPage
   {
-    '92achgdb': {
+    'kouusmt8': {
       'en': 'Submit',
-      'hi': '',
+      'hi': 'प्रस्तुत',
     },
-    'fbxbmvx4': {
+    'u9spf1rj': {
       'en': 'Product ID: ',
-      'hi': '',
+      'hi': 'उत्पाद आयडी:',
     },
-    '0y98kvrt': {
+    'a3rxb6ri': {
       'en': 'Key',
-      'hi': '',
+      'hi': 'चाबी',
     },
-    'hmh9khf1': {
+    'pyg22l6b': {
       'en': 'Value',
-      'hi': '',
+      'hi': 'मूल्य',
     },
-    '4vdzthl4': {
+    'bwt942ea': {
       'en': 'Field is required',
-      'hi': '',
+      'hi': 'क्षेत्र की आवश्यकता है',
     },
-    'jtnu33zw': {
+    'xpksg4dx': {
       'en': 'Field is required',
-      'hi': '',
+      'hi': 'क्षेत्र की आवश्यकता है',
     },
-    'vzcgqvno': {
+    '9phgp5ra': {
       'en': 'Add New Data Field',
-      'hi': '',
+      'hi': 'नया डेटा फ़ील्ड जोड़ें',
     },
-    '76667ol3': {
+    'mwxwlpy2': {
       'en': 'Page Title',
-      'hi': '',
+      'hi': 'पृष्ठ का शीर्षक',
     },
-    'exu6brz3': {
+    'ffrk6xpd': {
       'en': 'Home',
-      'hi': '',
+      'hi': 'घर',
     },
   },
   // ManageProduct
   {
-    's1s1gyje': {
+    'f1rwtybp': {
       'en': 'Enter UID',
-      'hi': '',
+      'hi': 'यूआईडी दर्ज करें',
     },
-    '60r1a70v': {
+    'o4j1wxok': {
       'en': 'Add Entity',
-      'hi': '',
+      'hi': 'इकाई जोड़ें',
     },
-    'wc05gl96': {
+    '660qdqi8': {
       'en': 'Add Block',
-      'hi': '',
+      'hi': 'ब्लॉक जोड़ें',
     },
-    'j7y6qrde': {
+    'f7kz2rl5': {
       'en': 'Validate SupplyChain',
-      'hi': '',
+      'hi': 'आपूर्ति श्रृंखला को मान्य करें',
     },
-    'd3hgeazn': {
+    '61147oxk': {
       'en': 'View SupplyChain Data',
-      'hi': '',
+      'hi': 'आपूर्ति श्रृंखला डेटा देखें',
     },
-    '77q3h8yy': {
+    'bfeghgpb': {
       'en': 'Delete Product',
-      'hi': '',
+      'hi': 'उत्पाद हटाएं',
     },
-    '7ciz3eqc': {
+    'mx28tw24': {
       'en': 'Manage Product',
-      'hi': '',
+      'hi': 'उत्पाद प्रबंधित करें',
     },
-    '9hew4lbz': {
+    'k92jafrc': {
       'en': 'Home',
-      'hi': '',
+      'hi': 'घर',
     },
   },
   // BlockValidityCheck
   {
-    'cz265h6r': {
+    '18h2bdl4': {
       'en': 'Validity Check',
-      'hi': '',
+      'hi': 'वैधता जांच',
     },
-    'o22cz579': {
+    'jcawery9': {
       'en': 'Home',
-      'hi': '',
+      'hi': 'घर',
     },
   },
   // BlockDataViewer
   {
-    'y9h9s01w': {
+    '5anx59r5': {
       'en': 'Data Viewer',
-      'hi': '',
+      'hi': 'डेटा व्यूअर',
     },
-    'luafacs9': {
+    'vpion3ai': {
       'en': 'Home',
-      'hi': '',
+      'hi': 'घर',
     },
   },
   // Miscellaneous

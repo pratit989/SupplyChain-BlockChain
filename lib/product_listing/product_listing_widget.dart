@@ -44,7 +44,9 @@ class _ProductListingWidgetState extends State<ProductListingWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         automaticallyImplyLeading: false,
         title: Text(
-          'Product Listing',
+          FFLocalizations.of(context).getText(
+            'h0r9y8gw' /* Product Listing */,
+          ),
           style: FlutterFlowTheme.of(context).title2.override(
                 fontFamily: 'Poppins',
                 color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -105,7 +107,9 @@ class _ProductListingWidgetState extends State<ProductListingWidget> {
                             autofocus: true,
                             obscureText: false,
                             decoration: InputDecoration(
-                              labelText: 'Enter Product Name',
+                              labelText: FFLocalizations.of(context).getText(
+                                'cnxdvw0k' /* Enter Product Name */,
+                              ),
                               enabledBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color(0x00000000),
@@ -133,7 +137,9 @@ class _ProductListingWidgetState extends State<ProductListingWidget> {
                             style: FlutterFlowTheme.of(context).bodyText1,
                             validator: (val) {
                               if (val.isEmpty) {
-                                return 'Field is required';
+                                return FFLocalizations.of(context).getText(
+                                  '5ihd66he' /* Field is required */,
+                                );
                               }
 
                               return null;
@@ -218,7 +224,9 @@ class _ProductListingWidgetState extends State<ProductListingWidget> {
 
                               setState(() {});
                             },
-                            text: 'Create New Product Blockchain',
+                            text: FFLocalizations.of(context).getText(
+                              '1rj3ahm7' /* Create New Product Blockchain */,
+                            ),
                             icon: Icon(
                               Icons.add_link,
                               size: 15,

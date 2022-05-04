@@ -76,7 +76,9 @@ class _AddBlockPageWidgetState extends State<AddBlockPageWidget> {
               },
             ),
             title: Text(
-              'Page Title',
+              FFLocalizations.of(context).getText(
+                'mwxwlpy2' /* Page Title */,
+              ),
               style: FlutterFlowTheme.of(context).title2.override(
                     fontFamily: 'Poppins',
                     color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -182,7 +184,9 @@ class _AddBlockPageWidgetState extends State<AddBlockPageWidget> {
 
                                   setState(() {});
                                 },
-                                text: 'Submit',
+                                text: FFLocalizations.of(context).getText(
+                                  'kouusmt8' /* Submit */,
+                                ),
                                 options: FFButtonOptions(
                                   width: 130,
                                   height: 40,
@@ -221,7 +225,9 @@ class _AddBlockPageWidgetState extends State<AddBlockPageWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         10, 0, 10, 0),
                                     child: Text(
-                                      'Product ID: ',
+                                      FFLocalizations.of(context).getText(
+                                        'u9spf1rj' /* Product ID:  */,
+                                      ),
                                       textAlign: TextAlign.center,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
@@ -290,7 +296,11 @@ class _AddBlockPageWidgetState extends State<AddBlockPageWidget> {
                                             autofocus: true,
                                             obscureText: false,
                                             decoration: InputDecoration(
-                                              labelText: 'Key',
+                                              labelText:
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                'a3rxb6ri' /* Key */,
+                                              ),
                                               enabledBorder:
                                                   UnderlineInputBorder(
                                                 borderSide: BorderSide(
@@ -351,7 +361,11 @@ class _AddBlockPageWidgetState extends State<AddBlockPageWidget> {
                                                 ),
                                             validator: (val) {
                                               if (val.isEmpty) {
-                                                return 'Field is required';
+                                                return FFLocalizations.of(
+                                                        context)
+                                                    .getText(
+                                                  'bwt942ea' /* Field is required */,
+                                                );
                                               }
 
                                               return null;
@@ -375,7 +389,11 @@ class _AddBlockPageWidgetState extends State<AddBlockPageWidget> {
                                             autofocus: true,
                                             obscureText: false,
                                             decoration: InputDecoration(
-                                              labelText: 'Value',
+                                              labelText:
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                'pyg22l6b' /* Value */,
+                                              ),
                                               enabledBorder:
                                                   UnderlineInputBorder(
                                                 borderSide: BorderSide(
@@ -437,7 +455,11 @@ class _AddBlockPageWidgetState extends State<AddBlockPageWidget> {
                                                 ),
                                             validator: (val) {
                                               if (val.isEmpty) {
-                                                return 'Field is required';
+                                                return FFLocalizations.of(
+                                                        context)
+                                                    .getText(
+                                                  'xpksg4dx' /* Field is required */,
+                                                );
                                               }
 
                                               return null;
@@ -489,7 +511,9 @@ class _AddBlockPageWidgetState extends State<AddBlockPageWidget> {
                                   setState(
                                       () => FFAppState().editEnabled = true);
                                 },
-                                text: 'Add New Data Field',
+                                text: FFLocalizations.of(context).getText(
+                                  '9phgp5ra' /* Add New Data Field */,
+                                ),
                                 options: FFButtonOptions(
                                   width: 200,
                                   height: 40,

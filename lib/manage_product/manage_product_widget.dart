@@ -73,7 +73,9 @@ class _ManageProductWidgetState extends State<ManageProductWidget> {
               },
             ),
             title: Text(
-              'Manage Product',
+              FFLocalizations.of(context).getText(
+                'mx28tw24' /* Manage Product */,
+              ),
               style: FlutterFlowTheme.of(context).title2.override(
                     fontFamily: 'Poppins',
                     color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -141,7 +143,9 @@ class _ManageProductWidgetState extends State<ManageProductWidget> {
                               autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
-                                labelText: 'Enter UID',
+                                labelText: FFLocalizations.of(context).getText(
+                                  'f1rwtybp' /* Enter UID */,
+                                ),
                                 enabledBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
@@ -207,7 +211,9 @@ class _ManageProductWidgetState extends State<ManageProductWidget> {
                                   ),
                                 );
                               },
-                              text: 'Add Entity',
+                              text: FFLocalizations.of(context).getText(
+                                'o4j1wxok' /* Add Entity */,
+                              ),
                               icon: Icon(
                                 Icons.person_add,
                                 size: 15,
@@ -248,7 +254,9 @@ class _ManageProductWidgetState extends State<ManageProductWidget> {
                           ),
                         );
                       },
-                      text: 'Add Block',
+                      text: FFLocalizations.of(context).getText(
+                        '660qdqi8' /* Add Block */,
+                      ),
                       icon: Icon(
                         Icons.add,
                         size: 15,
@@ -283,7 +291,9 @@ class _ManageProductWidgetState extends State<ManageProductWidget> {
                           ),
                         );
                       },
-                      text: 'Validate SupplyChain',
+                      text: FFLocalizations.of(context).getText(
+                        'f7kz2rl5' /* Validate SupplyChain */,
+                      ),
                       icon: Icon(
                         Icons.check,
                         size: 15,
@@ -318,7 +328,9 @@ class _ManageProductWidgetState extends State<ManageProductWidget> {
                           ),
                         );
                       },
-                      text: 'View SupplyChain Data',
+                      text: FFLocalizations.of(context).getText(
+                        '61147oxk' /* View SupplyChain Data */,
+                      ),
                       icon: Icon(
                         Icons.view_carousel,
                         size: 15,
@@ -351,7 +363,9 @@ class _ManageProductWidgetState extends State<ManageProductWidget> {
                           await widget.productRef.delete();
                           Navigator.pop(context);
                         },
-                        text: 'Delete Product',
+                        text: FFLocalizations.of(context).getText(
+                          'bfeghgpb' /* Delete Product */,
+                        ),
                         icon: Icon(
                           Icons.delete,
                           size: 15,
