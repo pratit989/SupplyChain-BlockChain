@@ -1,8 +1,10 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../home_page/home_page_widget.dart';
 import '../manage_product/manage_product_widget.dart';
 import '../custom_code/actions/index.dart' as actions;
 import '../flutter_flow/custom_functions.dart' as functions;
@@ -49,7 +51,29 @@ class _ProductListingWidgetState extends State<ProductListingWidget> {
                 fontSize: 22,
               ),
         ),
-        actions: [],
+        actions: [
+          FlutterFlowIconButton(
+            borderColor: Colors.transparent,
+            borderRadius: 30,
+            borderWidth: 1,
+            buttonSize: 60,
+            icon: Icon(
+              Icons.logout,
+              color: FlutterFlowTheme.of(context).secondaryBackground,
+              size: 30,
+            ),
+            onPressed: () async {
+              await signOut();
+              await Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => HomePageWidget(),
+                ),
+                (r) => false,
+              );
+            },
+          ),
+        ],
         centerTitle: true,
         elevation: 2,
       ),
