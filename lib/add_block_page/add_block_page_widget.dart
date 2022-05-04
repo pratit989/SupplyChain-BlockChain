@@ -112,79 +112,95 @@ class _AddBlockPageWidgetState extends State<AddBlockPageWidget> {
                     children: [
                       Align(
                         alignment: AlignmentDirectional(0, 1),
-                        child: StreamBuilder<BlocksRecord>(
-                          stream: BlocksRecord.getDocument(
-                              functions.getLatestBlockRef(
-                                  stackBlockchainsRecord.blocksList.toList())),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 50,
-                                  height: 50,
-                                  child: CircularProgressIndicator(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryColor,
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                          child: StreamBuilder<BlocksRecord>(
+                            stream: BlocksRecord.getDocument(
+                                functions.getLatestBlockRef(
+                                    stackBlockchainsRecord.blocksList
+                                        .toList())),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50,
+                                    height: 50,
+                                    child: CircularProgressIndicator(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryColor,
+                                    ),
                                   ),
+                                );
+                              }
+                              final buttonBlocksRecord = snapshot.data;
+                              return FFButtonWidget(
+                                onPressed: () async {
+                                  currentBlockHash =
+                                      await actions.sHA256Calculate(
+                                    stackBlockchainsRecord.latestBlockIndex,
+                                    buttonBlocksRecord.currentHash,
+                                    getCurrentTimestamp,
+                                    functions.toJSON(FFAppState().keys.toList(),
+                                        FFAppState().values.toList()),
+                                  );
+
+                                  final blocksCreateData = {
+                                    ...createBlocksRecordData(
+                                      index: functions.increment(
+                                          stackBlockchainsRecord
+                                              .latestBlockIndex),
+                                      timestamp: getCurrentTimestamp,
+                                      previousHash:
+                                          buttonBlocksRecord.currentHash,
+                                      currentHash: currentBlockHash,
+                                    ),
+                                    'data_keys': FFAppState().keys,
+                                    'data_values': FFAppState().values,
+                                  };
+                                  var blocksRecordReference =
+                                      BlocksRecord.collection.doc();
+                                  await blocksRecordReference
+                                      .set(blocksCreateData);
+                                  currentBlockRef =
+                                      BlocksRecord.getDocumentFromData(
+                                          blocksCreateData,
+                                          blocksRecordReference);
+
+                                  final blockchainsUpdateData = {
+                                    ...createBlockchainsRecordData(
+                                      latestBlockIndex: currentBlockRef.index,
+                                    ),
+                                    'blocks_list': FieldValue.arrayUnion(
+                                        [currentBlockRef.reference]),
+                                  };
+                                  await addBlockPageProductsRecord.blockchain
+                                      .update(blockchainsUpdateData);
+                                  Navigator.pop(context);
+
+                                  setState(() {});
+                                },
+                                text: 'Submit',
+                                options: FFButtonOptions(
+                                  width: 130,
+                                  height: 40,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryColor,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .subtitle2
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: Colors.white,
+                                      ),
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1,
+                                  ),
+                                  borderRadius: 12,
                                 ),
                               );
-                            }
-                            final buttonBlocksRecord = snapshot.data;
-                            return FFButtonWidget(
-                              onPressed: () async {
-                                currentBlockHash =
-                                    await actions.sHA256Calculate(
-                                  stackBlockchainsRecord.latestBlockIndex,
-                                  buttonBlocksRecord.currentHash,
-                                  getCurrentTimestamp,
-                                  functions.toJSON(FFAppState().keys.toList(),
-                                      FFAppState().values.toList()),
-                                );
-
-                                final blocksCreateData = {
-                                  ...createBlocksRecordData(
-                                    index:
-                                        stackBlockchainsRecord.latestBlockIndex,
-                                    timestamp: getCurrentTimestamp,
-                                    previousHash:
-                                        buttonBlocksRecord.currentHash,
-                                    currentHash: currentBlockHash,
-                                  ),
-                                  'data_keys': FFAppState().keys,
-                                  'data_values': FFAppState().values,
-                                };
-                                var blocksRecordReference =
-                                    BlocksRecord.collection.doc();
-                                await blocksRecordReference
-                                    .set(blocksCreateData);
-                                currentBlockRef =
-                                    BlocksRecord.getDocumentFromData(
-                                        blocksCreateData,
-                                        blocksRecordReference);
-
-                                setState(() {});
-                              },
-                              text: 'Submit',
-                              options: FFButtonOptions(
-                                width: 130,
-                                height: 40,
-                                color:
-                                    FlutterFlowTheme.of(context).primaryColor,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .subtitle2
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: Colors.white,
-                                    ),
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1,
-                                ),
-                                borderRadius: 12,
-                              ),
-                            );
-                          },
+                            },
+                          ),
                         ),
                       ),
                       Padding(
@@ -199,30 +215,46 @@ class _AddBlockPageWidgetState extends State<AddBlockPageWidget> {
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text(
-                                    'Product ID: ',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyText1
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryBackground,
-                                          fontSize: 16,
-                                        ),
-                                  ),
-                                  Text(
-                                    valueOrDefault<String>(
-                                      addBlockPageProductsRecord.productId,
-                                      'Invalid Product ID',
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10, 0, 10, 0),
+                                    child: Text(
+                                      'Product ID: ',
+                                      textAlign: TextAlign.center,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryBackground,
+                                            fontSize: 16,
+                                          ),
                                     ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyText1
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryBackground,
-                                          fontSize: 16,
+                                  ),
+                                  Expanded(
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10, 0, 10, 0),
+                                      child: Text(
+                                        valueOrDefault<String>(
+                                          addBlockPageProductsRecord.productId,
+                                          'Invalid Product ID',
+                                        ).maybeHandleOverflow(
+                                          maxChars: 20,
+                                          replacement: '…',
                                         ),
+                                        textAlign: TextAlign.center,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryBackground,
+                                              fontSize: 16,
+                                            ),
+                                      ),
+                                    ),
                                   ),
                                 ],
                               ),

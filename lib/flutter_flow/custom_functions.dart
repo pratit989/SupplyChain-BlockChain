@@ -29,3 +29,8 @@ DocumentReference getLatestBlockRef(List<DocumentReference> blockList) {
   // Add your function code here!
   return blockList[blockList.length - 1];
 }
+
+int increment(int currentIndex) {
+  // increment by 1
+  return currentIndex + 1;
+}
