@@ -180,6 +180,8 @@ class _AddBlockPageWidgetState extends State<AddBlockPageWidget> {
                                   };
                                   await addBlockPageProductsRecord.blockchain
                                       .update(blockchainsUpdateData);
+                                  setState(() => FFAppState().keys = []);
+                                  setState(() => FFAppState().values = []);
                                   Navigator.pop(context);
 
                                   setState(() {});
