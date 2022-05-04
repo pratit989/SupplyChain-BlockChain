@@ -55,8 +55,8 @@ class _BlockDataViewerWidgetState extends State<BlockDataViewerWidget> {
                 color: FlutterFlowTheme.of(context).secondaryBackground,
                 size: 30,
               ),
-              onPressed: () {
-                print('IconButton pressed ...');
+              onPressed: () async {
+                Navigator.pop(context);
               },
             ),
             title: Text(
@@ -104,50 +104,39 @@ class _BlockDataViewerWidgetState extends State<BlockDataViewerWidget> {
                             List.generate(blockList.length, (blockListIndex) {
                           final blockListItem = blockList[blockListIndex];
                           return Expanded(
-                            child: StreamBuilder<BlocksRecord>(
-                              stream: BlocksRecord.getDocument(blockListItem),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50,
-                                      height: 50,
-                                      child: CircularProgressIndicator(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryColor,
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  10, 10, 10, 10),
+                              child: StreamBuilder<BlocksRecord>(
+                                stream: BlocksRecord.getDocument(blockListItem),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 50,
+                                        height: 50,
+                                        child: CircularProgressIndicator(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryColor,
+                                        ),
                                       ),
-                                    ),
-                                  );
-                                }
-                                final expandableBlocksRecord = snapshot.data;
-                                return Container(
-                                  width: double.infinity,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  child: ExpandableNotifier(
-                                    initialExpanded: false,
-                                    child: ExpandablePanel(
-                                      header: Text(
-                                        expandableBlocksRecord.index.toString(),
-                                        textAlign: TextAlign.center,
-                                        style: FlutterFlowTheme.of(context)
-                                            .title1
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryBackground,
-                                            ),
-                                      ),
-                                      collapsed: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 8, 0, 0),
-                                        child: Text(
-                                          dateTimeFormat('yMMMd',
-                                              expandableBlocksRecord.timestamp),
+                                    );
+                                  }
+                                  final expandableBlocksRecord = snapshot.data;
+                                  return Container(
+                                    width: double.infinity,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    child: ExpandableNotifier(
+                                      initialExpanded: false,
+                                      child: ExpandablePanel(
+                                        header: Text(
+                                          expandableBlocksRecord.index
+                                              .toString(),
+                                          textAlign: TextAlign.center,
                                           style: FlutterFlowTheme.of(context)
-                                              .bodyText1
+                                              .title1
                                               .override(
                                                 fontFamily: 'Poppins',
                                                 color:
@@ -155,103 +144,127 @@ class _BlockDataViewerWidgetState extends State<BlockDataViewerWidget> {
                                                         .primaryBackground,
                                               ),
                                         ),
-                                      ),
-                                      expanded: SingleChildScrollView(
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                Expanded(
-                                                  child: Builder(
-                                                    builder: (context) {
-                                                      final keys =
-                                                          expandableBlocksRecord
-                                                                  .dataKeys
-                                                                  .toList()
-                                                                  ?.toList() ??
-                                                              [];
-                                                      return Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: List.generate(
-                                                            keys.length,
-                                                            (keysIndex) {
-                                                          final keysItem =
-                                                              keys[keysIndex];
-                                                          return Text(
-                                                            keysItem,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyText1
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Poppins',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryBackground,
-                                                                ),
-                                                          );
-                                                        }),
-                                                      );
-                                                    },
-                                                  ),
+                                        collapsed: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 8, 0, 0),
+                                          child: Text(
+                                            dateTimeFormat(
+                                                'yMMMd',
+                                                expandableBlocksRecord
+                                                    .timestamp),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryBackground,
                                                 ),
-                                                Expanded(
-                                                  child: Builder(
-                                                    builder: (context) {
-                                                      final values =
-                                                          expandableBlocksRecord
-                                                                  .dataValues
-                                                                  .toList()
-                                                                  ?.toList() ??
-                                                              [];
-                                                      return Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: List.generate(
-                                                            values.length,
-                                                            (valuesIndex) {
-                                                          final valuesItem =
-                                                              values[
-                                                                  valuesIndex];
-                                                          return Text(
-                                                            valuesItem,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyText1
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Poppins',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryBackground,
-                                                                ),
-                                                          );
-                                                        }),
-                                                      );
-                                                    },
+                                          ),
+                                        ),
+                                        expanded: SingleChildScrollView(
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Row(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  Expanded(
+                                                    child: Builder(
+                                                      builder: (context) {
+                                                        final keys =
+                                                            expandableBlocksRecord
+                                                                    .dataKeys
+                                                                    .toList()
+                                                                    ?.toList() ??
+                                                                [];
+                                                        return Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children:
+                                                              List.generate(
+                                                                  keys.length,
+                                                                  (keysIndex) {
+                                                            final keysItem =
+                                                                keys[keysIndex];
+                                                            return Text(
+                                                              keysItem,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyText1
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryBackground,
+                                                                  ),
+                                                            );
+                                                          }),
+                                                        );
+                                                      },
+                                                    ),
                                                   ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
+                                                  Expanded(
+                                                    child: Builder(
+                                                      builder: (context) {
+                                                        final values =
+                                                            expandableBlocksRecord
+                                                                    .dataValues
+                                                                    .toList()
+                                                                    ?.toList() ??
+                                                                [];
+                                                        return Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children:
+                                                              List.generate(
+                                                                  values.length,
+                                                                  (valuesIndex) {
+                                                            final valuesItem =
+                                                                values[
+                                                                    valuesIndex];
+                                                            return Text(
+                                                              valuesItem,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyText1
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryBackground,
+                                                                  ),
+                                                            );
+                                                          }),
+                                                        );
+                                                      },
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        theme: ExpandableThemeData(
+                                          tapHeaderToExpand: true,
+                                          tapBodyToExpand: false,
+                                          tapBodyToCollapse: false,
+                                          headerAlignment:
+                                              ExpandablePanelHeaderAlignment
+                                                  .center,
+                                          hasIcon: true,
+                                          iconColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primaryBackground,
                                         ),
                                       ),
-                                      theme: ExpandableThemeData(
-                                        tapHeaderToExpand: true,
-                                        tapBodyToExpand: false,
-                                        tapBodyToCollapse: false,
-                                        headerAlignment:
-                                            ExpandablePanelHeaderAlignment
-                                                .center,
-                                        hasIcon: true,
-                                      ),
                                     ),
-                                  ),
-                                );
-                              },
+                                  );
+                                },
+                              ),
                             ),
                           );
                         }),

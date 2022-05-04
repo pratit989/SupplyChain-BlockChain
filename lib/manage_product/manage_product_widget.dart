@@ -1,4 +1,5 @@
 import '../add_block_page/add_block_page_widget.dart';
+import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../block_data_viewer/block_data_viewer_widget.dart';
 import '../block_validity_check/block_validity_check_widget.dart';
@@ -7,6 +8,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -23,7 +25,15 @@ class ManageProductWidget extends StatefulWidget {
 }
 
 class _ManageProductWidgetState extends State<ManageProductWidget> {
+  TextEditingController textController;
+  final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    textController = TextEditingController();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,8 +68,8 @@ class _ManageProductWidgetState extends State<ManageProductWidget> {
                 color: FlutterFlowTheme.of(context).secondaryBackground,
                 size: 30,
               ),
-              onPressed: () {
-                print('IconButton pressed ...');
+              onPressed: () async {
+                Navigator.pop(context);
               },
             ),
             title: Text(
@@ -87,18 +97,146 @@ class _ManageProductWidgetState extends State<ManageProductWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Text(
-                        manageProductProductsRecord.productName,
-                        style: FlutterFlowTheme.of(context).bodyText1,
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+                        child: Text(
+                          manageProductProductsRecord.productName,
+                          style: FlutterFlowTheme.of(context).bodyText1,
+                        ),
                       ),
-                      Text(
-                        manageProductProductsRecord.productId,
-                        style: FlutterFlowTheme.of(context).bodyText1,
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(10, 0, 20, 0),
+                          child: Text(
+                            manageProductProductsRecord.productId
+                                .maybeHandleOverflow(
+                              maxChars: 20,
+                              replacement: '…',
+                            ),
+                            style: FlutterFlowTheme.of(context).bodyText1,
+                          ),
+                        ),
                       ),
                     ],
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                    child: Form(
+                      key: formKey,
+                      autovalidateMode: AutovalidateMode.disabled,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(20, 5, 20, 5),
+                            child: TextFormField(
+                              controller: textController,
+                              onChanged: (_) => EasyDebounce.debounce(
+                                'textController',
+                                Duration(milliseconds: 2000),
+                                () => setState(() {}),
+                              ),
+                              autofocus: true,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                labelText: 'Enter UID',
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1,
+                                  ),
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1,
+                                  ),
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                filled: true,
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                suffixIcon: textController.text.isNotEmpty
+                                    ? InkWell(
+                                        onTap: () => setState(
+                                          () => textController.clear(),
+                                        ),
+                                        child: Icon(
+                                          Icons.clear,
+                                          color: Color(0xFF757575),
+                                          size: 22,
+                                        ),
+                                      )
+                                    : null,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyText1
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                  ),
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+                            child: FFButtonWidget(
+                              onPressed: () async {
+                                if (!formKey.currentState.validate()) {
+                                  return;
+                                }
+
+                                final productsUpdateData = {
+                                  'entitity_list': FieldValue.arrayUnion(
+                                      [textController.text]),
+                                };
+                                await widget.productRef
+                                    .update(productsUpdateData);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Added Entity',
+                                      style: TextStyle(),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor: Color(0x00000000),
+                                  ),
+                                );
+                              },
+                              text: 'Add Entity',
+                              icon: Icon(
+                                Icons.person_add,
+                                size: 15,
+                              ),
+                              options: FFButtonOptions(
+                                width: 130,
+                                height: 60,
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .subtitle2
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: Colors.white,
+                                    ),
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1,
+                                ),
+                                borderRadius: 12,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         await Navigator.push(
@@ -202,35 +340,39 @@ class _ManageProductWidgetState extends State<ManageProductWidget> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 20),
-                    child: FFButtonWidget(
-                      onPressed: () async {
-                        await widget.productRef.delete();
-                        Navigator.pop(context);
-                      },
-                      text: 'Delete Product',
-                      icon: Icon(
-                        Icons.delete,
-                        size: 15,
-                      ),
-                      options: FFButtonOptions(
-                        width: 130,
-                        height: 60,
-                        color: FlutterFlowTheme.of(context).alternate,
-                        textStyle:
-                            FlutterFlowTheme.of(context).subtitle2.override(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.white,
-                                ),
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1,
+                  if (!(manageProductProductsRecord.entitityList
+                          .toList()
+                          ?.contains(currentUserUid)) ??
+                      true)
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 20),
+                      child: FFButtonWidget(
+                        onPressed: () async {
+                          await widget.productRef.delete();
+                          Navigator.pop(context);
+                        },
+                        text: 'Delete Product',
+                        icon: Icon(
+                          Icons.delete,
+                          size: 15,
                         ),
-                        borderRadius: 12,
+                        options: FFButtonOptions(
+                          width: 130,
+                          height: 60,
+                          color: FlutterFlowTheme.of(context).alternate,
+                          textStyle:
+                              FlutterFlowTheme.of(context).subtitle2.override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                  ),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1,
+                          ),
+                          borderRadius: 12,
+                        ),
                       ),
                     ),
-                  ),
                 ],
               ),
             ),

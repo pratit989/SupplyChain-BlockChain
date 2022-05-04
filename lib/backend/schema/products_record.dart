@@ -29,13 +29,18 @@ abstract class ProductsRecord
   String get productName;
 
   @nullable
+  @BuiltValueField(wireName: 'entitity_list')
+  BuiltList<String> get entitityList;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
   static void _initializeBuilder(ProductsRecordBuilder builder) => builder
     ..uid = ''
     ..productId = ''
-    ..productName = '';
+    ..productName = ''
+    ..entitityList = ListBuilder();
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('products');
@@ -72,4 +77,5 @@ Map<String, dynamic> createProductsRecordData({
           ..blockchain = blockchain
           ..timestamp = timestamp
           ..productId = productId
-          ..productName = productName));
+          ..productName = productName
+          ..entitityList = null));

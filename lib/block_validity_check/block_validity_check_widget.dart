@@ -55,8 +55,8 @@ class _BlockValidityCheckWidgetState extends State<BlockValidityCheckWidget> {
                 color: FlutterFlowTheme.of(context).secondaryBackground,
                 size: 30,
               ),
-              onPressed: () {
-                print('IconButton pressed ...');
+              onPressed: () async {
+                Navigator.pop(context);
               },
             ),
             title: Text(

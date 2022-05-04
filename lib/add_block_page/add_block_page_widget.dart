@@ -71,8 +71,8 @@ class _AddBlockPageWidgetState extends State<AddBlockPageWidget> {
                 color: FlutterFlowTheme.of(context).secondaryBackground,
                 size: 30,
               ),
-              onPressed: () {
-                print('IconButton pressed ...');
+              onPressed: () async {
+                Navigator.pop(context);
               },
             ),
             title: Text(
@@ -261,7 +261,7 @@ class _AddBlockPageWidgetState extends State<AddBlockPageWidget> {
                             ),
                             Form(
                               key: formKey,
-                              autovalidateMode: AutovalidateMode.always,
+                              autovalidateMode: AutovalidateMode.disabled,
                               child: Visibility(
                                 visible: FFAppState().editEnabled ?? true,
                                 child: Padding(

@@ -334,36 +334,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                         ),
                       ),
                     ),
-                    FFButtonWidget(
-                      onPressed: () async {
-                        await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => LoginWidget(
-                              userType: 'Vendor',
-                            ),
-                          ),
-                        );
-                      },
-                      text: FFLocalizations.of(context).getText(
-                        'ejtleto1' /* Vendor */,
-                      ),
-                      options: FFButtonOptions(
-                        width: 130,
-                        height: 40,
-                        color: FlutterFlowTheme.of(context).primaryColor,
-                        textStyle:
-                            FlutterFlowTheme.of(context).subtitle2.override(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.white,
-                                ),
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1,
-                        ),
-                        borderRadius: 12,
-                      ),
-                    ),
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
                       child: FFButtonWidget(
@@ -372,13 +342,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
                             context,
                             MaterialPageRoute(
                               builder: (context) => LoginWidget(
-                                userType: 'certifier',
+                                userType: 'Other',
                               ),
                             ),
                           );
                         },
                         text: FFLocalizations.of(context).getText(
-                          'aj0y0udm' /* Certifier */,
+                          'aj0y0udm' /* Other */,
                         ),
                         options: FFButtonOptions(
                           width: 130,

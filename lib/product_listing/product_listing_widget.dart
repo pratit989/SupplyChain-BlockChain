@@ -60,149 +60,165 @@ class _ProductListingWidgetState extends State<ProductListingWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Form(
-                key: formKey,
-                autovalidateMode: AutovalidateMode.disabled,
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
-                      child: TextFormField(
-                        controller: textController,
-                        onChanged: (_) => EasyDebounce.debounce(
-                          'textController',
-                          Duration(milliseconds: 2000),
-                          () => setState(() {}),
-                        ),
-                        autofocus: true,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          labelText: 'Enter Product Name',
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color(0x00000000),
-                              width: 1,
+              if ((currentUserDocument?.userType) == 'Manufacturer')
+                AuthUserStreamWidget(
+                  child: Form(
+                    key: formKey,
+                    autovalidateMode: AutovalidateMode.disabled,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
+                          child: TextFormField(
+                            controller: textController,
+                            onChanged: (_) => EasyDebounce.debounce(
+                              'textController',
+                              Duration(milliseconds: 2000),
+                              () => setState(() {}),
                             ),
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(4.0),
-                              topRight: Radius.circular(4.0),
+                            autofocus: true,
+                            obscureText: false,
+                            decoration: InputDecoration(
+                              labelText: 'Enter Product Name',
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 1,
+                                ),
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(4.0),
+                                  topRight: Radius.circular(4.0),
+                                ),
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0x00000000),
+                                  width: 1,
+                                ),
+                                borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(4.0),
+                                  topRight: Radius.circular(4.0),
+                                ),
+                              ),
+                              filled: true,
+                              fillColor: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                            ),
+                            style: FlutterFlowTheme.of(context).bodyText1,
+                            validator: (val) {
+                              if (val.isEmpty) {
+                                return 'Field is required';
+                              }
+
+                              return null;
+                            },
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(20, 10, 20, 20),
+                          child: FFButtonWidget(
+                            onPressed: () async {
+                              if (!formKey.currentState.validate()) {
+                                return;
+                              }
+
+                              final productsCreateData =
+                                  createProductsRecordData(
+                                uid: currentUserUid,
+                                timestamp: getCurrentTimestamp,
+                                productId:
+                                    '${getCurrentTimestamp.toString()}${random_data.randomString(
+                                  1,
+                                  10,
+                                  true,
+                                  true,
+                                  true,
+                                )}',
+                                productName: textController.text,
+                              );
+                              var productsRecordReference =
+                                  ProductsRecord.collection.doc();
+                              await productsRecordReference
+                                  .set(productsCreateData);
+                              productDocumentRef =
+                                  ProductsRecord.getDocumentFromData(
+                                      productsCreateData,
+                                      productsRecordReference);
+                              genesisHash = await actions.sHA256Calculate(
+                                0,
+                                '0',
+                                getCurrentTimestamp,
+                                functions.toJSON(FFAppState().keys.toList(),
+                                    FFAppState().values.toList()),
+                              );
+
+                              final blocksCreateData = {
+                                ...createBlocksRecordData(
+                                  index: 0,
+                                  timestamp: getCurrentTimestamp,
+                                  previousHash: '0',
+                                  currentHash: genesisHash,
+                                ),
+                                'data_keys': ['0'],
+                                'data_values': ['0'],
+                              };
+                              var blocksRecordReference =
+                                  BlocksRecord.collection.doc();
+                              await blocksRecordReference.set(blocksCreateData);
+                              blockRef = BlocksRecord.getDocumentFromData(
+                                  blocksCreateData, blocksRecordReference);
+
+                              final blockchainsCreateData = {
+                                'blocks_list': [blockRef.reference],
+                              };
+                              var blockchainsRecordReference =
+                                  BlockchainsRecord.collection.doc();
+                              await blockchainsRecordReference
+                                  .set(blockchainsCreateData);
+                              blockChainRef =
+                                  BlockchainsRecord.getDocumentFromData(
+                                      blockchainsCreateData,
+                                      blockchainsRecordReference);
+
+                              final productsUpdateData =
+                                  createProductsRecordData(
+                                blockchain: blockChainRef.reference,
+                              );
+                              await productDocumentRef.reference
+                                  .update(productsUpdateData);
+
+                              setState(() {});
+                            },
+                            text: 'Create New Product Blockchain',
+                            icon: Icon(
+                              Icons.add_link,
+                              size: 15,
+                            ),
+                            options: FFButtonOptions(
+                              width: 350,
+                              height: 40,
+                              color: FlutterFlowTheme.of(context).primaryColor,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .subtitle2
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                  ),
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1,
+                              ),
+                              borderRadius: 12,
                             ),
                           ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color(0x00000000),
-                              width: 1,
-                            ),
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(4.0),
-                              topRight: Radius.circular(4.0),
-                            ),
-                          ),
-                          filled: true,
-                          fillColor:
-                              FlutterFlowTheme.of(context).primaryBackground,
                         ),
-                        style: FlutterFlowTheme.of(context).bodyText1,
-                        validator: (val) {
-                          if (val.isEmpty) {
-                            return 'Field is required';
-                          }
-
-                          return null;
-                        },
-                      ),
+                      ],
                     ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 20),
-                child: FFButtonWidget(
-                  onPressed: () async {
-                    if (!formKey.currentState.validate()) {
-                      return;
-                    }
-
-                    final productsCreateData = createProductsRecordData(
-                      uid: currentUserUid,
-                      timestamp: getCurrentTimestamp,
-                      productId:
-                          '${getCurrentTimestamp.toString()}${random_data.randomString(
-                        1,
-                        10,
-                        true,
-                        true,
-                        true,
-                      )}',
-                      productName: textController.text,
-                    );
-                    var productsRecordReference =
-                        ProductsRecord.collection.doc();
-                    await productsRecordReference.set(productsCreateData);
-                    productDocumentRef = ProductsRecord.getDocumentFromData(
-                        productsCreateData, productsRecordReference);
-                    genesisHash = await actions.sHA256Calculate(
-                      0,
-                      '0',
-                      getCurrentTimestamp,
-                      functions.toJSON(FFAppState().keys.toList(),
-                          FFAppState().values.toList()),
-                    );
-
-                    final blocksCreateData = {
-                      ...createBlocksRecordData(
-                        index: 0,
-                        timestamp: getCurrentTimestamp,
-                        previousHash: '0',
-                        currentHash: genesisHash,
-                      ),
-                      'data_keys': ['0'],
-                      'data_values': ['0'],
-                    };
-                    var blocksRecordReference = BlocksRecord.collection.doc();
-                    await blocksRecordReference.set(blocksCreateData);
-                    blockRef = BlocksRecord.getDocumentFromData(
-                        blocksCreateData, blocksRecordReference);
-
-                    final blockchainsCreateData = {
-                      'blocks_list': [blockRef.reference],
-                    };
-                    var blockchainsRecordReference =
-                        BlockchainsRecord.collection.doc();
-                    await blockchainsRecordReference.set(blockchainsCreateData);
-                    blockChainRef = BlockchainsRecord.getDocumentFromData(
-                        blockchainsCreateData, blockchainsRecordReference);
-
-                    final productsUpdateData = createProductsRecordData(
-                      blockchain: blockChainRef.reference,
-                    );
-                    await productDocumentRef.reference
-                        .update(productsUpdateData);
-
-                    setState(() {});
-                  },
-                  text: 'Create New Product Blockchain',
-                  icon: Icon(
-                    Icons.add_link,
-                    size: 15,
-                  ),
-                  options: FFButtonOptions(
-                    width: 350,
-                    height: 40,
-                    color: FlutterFlowTheme.of(context).primaryColor,
-                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                          fontFamily: 'Poppins',
-                          color: Colors.white,
-                        ),
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                      width: 1,
-                    ),
-                    borderRadius: 12,
                   ),
                 ),
-              ),
               Expanded(
                 child: StreamBuilder<List<ProductsRecord>>(
                   stream: queryProductsRecord(
