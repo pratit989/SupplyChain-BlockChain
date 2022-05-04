@@ -253,76 +253,158 @@ class _ProductListingWidgetState extends State<ProductListingWidget> {
                     ),
                   ),
                 ),
-              Expanded(
-                child: StreamBuilder<List<ProductsRecord>>(
-                  stream: queryProductsRecord(
-                    queryBuilder: (productsRecord) => productsRecord
-                        .where('uid', isEqualTo: currentUserUid)
-                        .orderBy('timestamp'),
-                  ),
-                  builder: (context, snapshot) {
-                    // Customize what your widget looks like when it's loading.
-                    if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 50,
-                          height: 50,
-                          child: CircularProgressIndicator(
-                            color: FlutterFlowTheme.of(context).primaryColor,
-                          ),
-                        ),
-                      );
-                    }
-                    List<ProductsRecord> listViewProductsRecordList =
-                        snapshot.data;
-                    return ListView.builder(
-                      padding: EdgeInsets.zero,
-                      scrollDirection: Axis.vertical,
-                      itemCount: listViewProductsRecordList.length,
-                      itemBuilder: (context, listViewIndex) {
-                        final listViewProductsRecord =
-                            listViewProductsRecordList[listViewIndex];
-                        return InkWell(
-                          onTap: () async {
-                            await Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => ManageProductWidget(
-                                  productRef: listViewProductsRecord.reference,
-                                ),
+              if ((currentUserDocument?.userType) == 'Manufacturer')
+                Expanded(
+                  child: AuthUserStreamWidget(
+                    child: StreamBuilder<List<ProductsRecord>>(
+                      stream: queryProductsRecord(
+                        queryBuilder: (productsRecord) => productsRecord
+                            .where('uid', isEqualTo: currentUserUid)
+                            .orderBy('timestamp'),
+                      ),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50,
+                              height: 50,
+                              child: CircularProgressIndicator(
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
                               ),
-                            );
-                          },
-                          child: ListTile(
-                            title: Text(
-                              listViewProductsRecord.productName,
-                              style:
-                                  FlutterFlowTheme.of(context).title3.override(
+                            ),
+                          );
+                        }
+                        List<ProductsRecord> listViewProductsRecordList =
+                            snapshot.data;
+                        return ListView.builder(
+                          padding: EdgeInsets.zero,
+                          scrollDirection: Axis.vertical,
+                          itemCount: listViewProductsRecordList.length,
+                          itemBuilder: (context, listViewIndex) {
+                            final listViewProductsRecord =
+                                listViewProductsRecordList[listViewIndex];
+                            return InkWell(
+                              onTap: () async {
+                                await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ManageProductWidget(
+                                      productRef:
+                                          listViewProductsRecord.reference,
+                                    ),
+                                  ),
+                                );
+                              },
+                              child: ListTile(
+                                title: Text(
+                                  listViewProductsRecord.productName,
+                                  style: FlutterFlowTheme.of(context)
+                                      .title3
+                                      .override(
                                         fontFamily: 'Poppins',
                                         color: FlutterFlowTheme.of(context)
                                             .primaryBackground,
                                       ),
-                            ),
-                            subtitle: Text(
-                              listViewProductsRecord.productId,
-                              style: FlutterFlowTheme.of(context).subtitle2,
-                            ),
-                            trailing: Icon(
-                              Icons.arrow_forward_ios,
-                              color: FlutterFlowTheme.of(context)
-                                  .primaryBackground,
-                              size: 20,
-                            ),
-                            tileColor: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            dense: false,
-                          ),
+                                ),
+                                subtitle: Text(
+                                  listViewProductsRecord.productId,
+                                  style: FlutterFlowTheme.of(context).subtitle2,
+                                ),
+                                trailing: Icon(
+                                  Icons.arrow_forward_ios,
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  size: 20,
+                                ),
+                                tileColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                dense: false,
+                              ),
+                            );
+                          },
                         );
                       },
-                    );
-                  },
+                    ),
+                  ),
                 ),
-              ),
+              if ((currentUserDocument?.userType) != 'Manufacturer')
+                Expanded(
+                  child: AuthUserStreamWidget(
+                    child: StreamBuilder<List<ProductsRecord>>(
+                      stream: queryProductsRecord(
+                        queryBuilder: (productsRecord) => productsRecord.where(
+                            'entitity_list',
+                            arrayContains: currentUserUid),
+                      ),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50,
+                              height: 50,
+                              child: CircularProgressIndicator(
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
+                              ),
+                            ),
+                          );
+                        }
+                        List<ProductsRecord> listViewProductsRecordList =
+                            snapshot.data;
+                        return ListView.builder(
+                          padding: EdgeInsets.zero,
+                          scrollDirection: Axis.vertical,
+                          itemCount: listViewProductsRecordList.length,
+                          itemBuilder: (context, listViewIndex) {
+                            final listViewProductsRecord =
+                                listViewProductsRecordList[listViewIndex];
+                            return InkWell(
+                              onTap: () async {
+                                await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ManageProductWidget(
+                                      productRef:
+                                          listViewProductsRecord.reference,
+                                    ),
+                                  ),
+                                );
+                              },
+                              child: ListTile(
+                                title: Text(
+                                  listViewProductsRecord.productName,
+                                  style: FlutterFlowTheme.of(context)
+                                      .title3
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                      ),
+                                ),
+                                subtitle: Text(
+                                  listViewProductsRecord.productId,
+                                  style: FlutterFlowTheme.of(context).subtitle2,
+                                ),
+                                trailing: Icon(
+                                  Icons.arrow_forward_ios,
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  size: 20,
+                                ),
+                                tileColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                dense: false,
+                              ),
+                            );
+                          },
+                        );
+                      },
+                    ),
+                  ),
+                ),
             ],
           ),
         ),
