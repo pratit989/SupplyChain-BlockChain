@@ -223,7 +223,7 @@ class _AddBlockPageWidgetState extends State<AddBlockPageWidget> {
                                 children: [
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        10, 0, 10, 0),
+                                        10, 0, 5, 0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
                                         'u9spf1rj' /* Product ID:  */,
@@ -242,16 +242,16 @@ class _AddBlockPageWidgetState extends State<AddBlockPageWidget> {
                                   Expanded(
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          10, 0, 10, 0),
+                                          5, 0, 10, 0),
                                       child: Text(
                                         valueOrDefault<String>(
                                           addBlockPageProductsRecord.productId,
                                           'Invalid Product ID',
                                         ).maybeHandleOverflow(
-                                          maxChars: 20,
+                                          maxChars: 30,
                                           replacement: '…',
                                         ),
-                                        textAlign: TextAlign.center,
+                                        textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(

@@ -112,7 +112,7 @@ class _ManageProductWidgetState extends State<ManageProductWidget> {
                           child: Text(
                             manageProductProductsRecord.productId
                                 .maybeHandleOverflow(
-                              maxChars: 20,
+                              maxChars: 40,
                               replacement: '…',
                             ),
                             style: FlutterFlowTheme.of(context).bodyText1,
