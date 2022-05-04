@@ -318,7 +318,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                           'bh6d3xn6' /* Manufacturer */,
                         ),
                         options: FFButtonOptions(
-                          width: 130,
+                          width: 230,
                           height: 40,
                           color: FlutterFlowTheme.of(context).primaryColor,
                           textStyle:
@@ -351,7 +351,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                           'aj0y0udm' /* Other */,
                         ),
                         options: FFButtonOptions(
-                          width: 130,
+                          width: 230,
                           height: 40,
                           color: FlutterFlowTheme.of(context).primaryColor,
                           textStyle:
