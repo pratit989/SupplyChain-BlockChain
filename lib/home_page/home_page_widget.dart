@@ -56,8 +56,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
           .where((anim) => anim.trigger == AnimationTrigger.onActionTrigger),
       this,
     );
-
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'HomePage'});
   }
 
   @override
@@ -79,10 +77,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                       true)
                     InkWell(
                       onTap: () async {
-                        logFirebaseEvent('isLightMode-ON_TAP');
-                        logFirebaseEvent('isLightMode-Set-Dark-Mode-Settings');
                         setDarkModeSetting(context, ThemeMode.dark);
-                        logFirebaseEvent('isLightMode-Widget-Animation');
                         await (animationsMap[
                                     'containerOnActionTriggerAnimation2']
                                 .curvedAnimation
@@ -177,10 +172,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                   if (Theme.of(context).brightness == Brightness.dark ?? true)
                     InkWell(
                       onTap: () async {
-                        logFirebaseEvent('isDarkMode-ON_TAP');
-                        logFirebaseEvent('isDarkMode-Set-Dark-Mode-Settings');
                         setDarkModeSetting(context, ThemeMode.light);
-                        logFirebaseEvent('isDarkMode-Widget-Animation');
                         await (animationsMap[
                                     'containerOnActionTriggerAnimation1']
                                 .curvedAnimation
@@ -313,8 +305,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                       padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 10),
                       child: FFButtonWidget(
                         onPressed: () async {
-                          logFirebaseEvent('Button-ON_TAP');
-                          logFirebaseEvent('Button-Navigate-To');
                           await Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -346,8 +336,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                     ),
                     FFButtonWidget(
                       onPressed: () async {
-                        logFirebaseEvent('Button-ON_TAP');
-                        logFirebaseEvent('Button-Navigate-To');
                         await Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -380,8 +368,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                       padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
                       child: FFButtonWidget(
                         onPressed: () async {
-                          logFirebaseEvent('Button-ON_TAP');
-                          logFirebaseEvent('Button-Navigate-To');
                           await Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -432,8 +418,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                       children: [
                         FFButtonWidget(
                           onPressed: () async {
-                            logFirebaseEvent('Button-ON_TAP');
-                            logFirebaseEvent('Button-Set-App-Language');
                             setAppLanguage(context, 'en');
                           },
                           text: 'English',
@@ -455,8 +439,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                         ),
                         FFButtonWidget(
                           onPressed: () async {
-                            logFirebaseEvent('Button-ON_TAP');
-                            logFirebaseEvent('Button-Set-App-Language');
                             setAppLanguage(context, 'hi');
                           },
                           text: 'Hindi',

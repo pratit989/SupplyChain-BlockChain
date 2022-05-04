@@ -5,7 +5,9 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../custom_code/actions/index.dart' as actions;
 import '../flutter_flow/custom_functions.dart' as functions;
+import '../flutter_flow/random_data_util.dart' as random_data;
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -21,13 +23,14 @@ class _ProductListingWidgetState extends State<ProductListingWidget> {
   BlocksRecord blockRef;
   ProductsRecord productDocumentRef;
   String genesisHash;
+  TextEditingController textController;
+  final formKey = GlobalKey<FormState>();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    logFirebaseEvent('screen_view',
-        parameters: {'screen_name': 'ProductListing'});
+    textController = TextEditingController();
   }
 
   @override
@@ -56,23 +59,88 @@ class _ProductListingWidgetState extends State<ProductListingWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
+              Form(
+                key: formKey,
+                autovalidateMode: AutovalidateMode.disabled,
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
+                      child: TextFormField(
+                        controller: textController,
+                        onChanged: (_) => EasyDebounce.debounce(
+                          'textController',
+                          Duration(milliseconds: 2000),
+                          () => setState(() {}),
+                        ),
+                        autofocus: true,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: 'Enter Product Name',
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 1,
+                            ),
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(4.0),
+                              topRight: Radius.circular(4.0),
+                            ),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 1,
+                            ),
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(4.0),
+                              topRight: Radius.circular(4.0),
+                            ),
+                          ),
+                          filled: true,
+                          fillColor:
+                              FlutterFlowTheme.of(context).primaryBackground,
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyText1,
+                        validator: (val) {
+                          if (val.isEmpty) {
+                            return 'Field is required';
+                          }
+
+                          return null;
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
+                padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 20),
                 child: FFButtonWidget(
                   onPressed: () async {
-                    logFirebaseEvent('Button-ON_TAP');
-                    logFirebaseEvent('Button-Backend-Call');
+                    if (!formKey.currentState.validate()) {
+                      return;
+                    }
 
                     final productsCreateData = createProductsRecordData(
                       uid: currentUserUid,
                       timestamp: getCurrentTimestamp,
+                      productId:
+                          '${getCurrentTimestamp.toString()}${random_data.randomString(
+                        1,
+                        10,
+                        true,
+                        true,
+                        true,
+                      )}',
+                      productName: textController.text,
                     );
                     var productsRecordReference =
                         ProductsRecord.collection.doc();
                     await productsRecordReference.set(productsCreateData);
                     productDocumentRef = ProductsRecord.getDocumentFromData(
                         productsCreateData, productsRecordReference);
-                    logFirebaseEvent('Button-Custom-Action');
                     genesisHash = await actions.sHA256Calculate(
                       0,
                       '0',
@@ -80,7 +148,6 @@ class _ProductListingWidgetState extends State<ProductListingWidget> {
                       functions.toJSON(FFAppState().keys.toList(),
                           FFAppState().values.toList()),
                     );
-                    logFirebaseEvent('Button-Backend-Call');
 
                     final blocksCreateData = {
                       ...createBlocksRecordData(
@@ -96,7 +163,6 @@ class _ProductListingWidgetState extends State<ProductListingWidget> {
                     await blocksRecordReference.set(blocksCreateData);
                     blockRef = BlocksRecord.getDocumentFromData(
                         blocksCreateData, blocksRecordReference);
-                    logFirebaseEvent('Button-Backend-Call');
 
                     final blockchainsCreateData = {
                       'blocks_list': [blockRef.reference],
@@ -106,7 +172,6 @@ class _ProductListingWidgetState extends State<ProductListingWidget> {
                     await blockchainsRecordReference.set(blockchainsCreateData);
                     blockChainRef = BlockchainsRecord.getDocumentFromData(
                         blockchainsCreateData, blockchainsRecordReference);
-                    logFirebaseEvent('Button-Backend-Call');
 
                     final productsUpdateData = createProductsRecordData(
                       blockchain: blockChainRef.reference,

@@ -36,8 +36,6 @@ class _AddBlockPageWidgetState extends State<AddBlockPageWidget> {
     super.initState();
     keyFieldController = TextEditingController();
     valueFieldController = TextEditingController();
-    logFirebaseEvent('screen_view',
-        parameters: {'screen_name': 'AddBlockPage'});
   }
 
   @override
@@ -63,8 +61,22 @@ class _AddBlockPageWidgetState extends State<AddBlockPageWidget> {
           appBar: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             automaticallyImplyLeading: false,
+            leading: FlutterFlowIconButton(
+              borderColor: Colors.transparent,
+              borderRadius: 30,
+              borderWidth: 1,
+              buttonSize: 60,
+              icon: Icon(
+                Icons.arrow_back_rounded,
+                color: FlutterFlowTheme.of(context).secondaryBackground,
+                size: 30,
+              ),
+              onPressed: () {
+                print('IconButton pressed ...');
+              },
+            ),
             title: Text(
-              'Add Block Data',
+              'Page Title',
               style: FlutterFlowTheme.of(context).title2.override(
                     fontFamily: 'Poppins',
                     color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -121,8 +133,6 @@ class _AddBlockPageWidgetState extends State<AddBlockPageWidget> {
                             final buttonBlocksRecord = snapshot.data;
                             return FFButtonWidget(
                               onPressed: () async {
-                                logFirebaseEvent('Button-ON_TAP');
-                                logFirebaseEvent('Button-Custom-Action');
                                 currentBlockHash =
                                     await actions.sHA256Calculate(
                                   stackBlockchainsRecord.latestBlockIndex,
@@ -131,7 +141,6 @@ class _AddBlockPageWidgetState extends State<AddBlockPageWidget> {
                                   functions.toJSON(FFAppState().keys.toList(),
                                       FFAppState().values.toList()),
                                 );
-                                logFirebaseEvent('Button-Backend-Call');
 
                                 final blocksCreateData = {
                                   ...createBlocksRecordData(
@@ -414,30 +423,19 @@ class _AddBlockPageWidgetState extends State<AddBlockPageWidget> {
                                           size: 40,
                                         ),
                                         onPressed: () async {
-                                          logFirebaseEvent('IconButton-ON_TAP');
-                                          logFirebaseEvent(
-                                              'IconButton-Validate-Form');
                                           if (!formKey.currentState
                                               .validate()) {
                                             return;
                                           }
 
-                                          logFirebaseEvent(
-                                              'IconButton-Update-Local-State');
                                           setState(() =>
                                               FFAppState().editEnabled = false);
-                                          logFirebaseEvent(
-                                              'IconButton-Update-Local-State');
                                           setState(() => FFAppState()
                                               .keys
                                               .add(keyFieldController.text));
-                                          logFirebaseEvent(
-                                              'IconButton-Update-Local-State');
                                           setState(() => FFAppState()
                                               .values
                                               .add(valueFieldController.text));
-                                          logFirebaseEvent(
-                                              'IconButton-Clear-Text-Fields');
                                           setState(() {
                                             keyFieldController.clear();
                                             valueFieldController.clear();
@@ -454,8 +452,6 @@ class _AddBlockPageWidgetState extends State<AddBlockPageWidget> {
                                   20, 20, 20, 20),
                               child: FFButtonWidget(
                                 onPressed: () async {
-                                  logFirebaseEvent('Button-ON_TAP');
-                                  logFirebaseEvent('Button-Update-Local-State');
                                   setState(
                                       () => FFAppState().editEnabled = true);
                                 },

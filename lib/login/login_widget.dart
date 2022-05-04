@@ -25,17 +25,13 @@ class _LoginWidgetState extends State<LoginWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
-  void initState() {
-    super.initState();
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Login'});
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        iconTheme: IconThemeData(
+            color: FlutterFlowTheme.of(context).secondaryBackground),
         automaticallyImplyLeading: true,
         title: Text(
           'Authenticate Yourself',
@@ -105,13 +101,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                           alignment: AlignmentDirectional(0, 0),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              logFirebaseEvent('Button-ON_TAP');
-                              logFirebaseEvent('Button-Auth');
                               final user = await signInWithGoogle(context);
                               if (user == null) {
                                 return;
                               }
-                              logFirebaseEvent('Button-Backend-Call');
 
                               final usersUpdateData = createUsersRecordData(
                                 userType: widget.userType,
@@ -172,29 +165,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(40, 5, 40, 5),
-                child: Text(
-                  FFLocalizations.of(context).getText(
-                    'crjmxgrf' /* OR */,
-                  ),
-                  style: FlutterFlowTheme.of(context).bodyText1.override(
-                        fontFamily: 'Poppins',
-                        color: FlutterFlowTheme.of(context).primaryBackground,
-                      ),
-                ),
-              ),
               isAndroid
                   ? Container()
                   : FFButtonWidget(
                       onPressed: () async {
-                        logFirebaseEvent('Button-ON_TAP');
-                        logFirebaseEvent('Button-Auth');
                         final user = await signInWithApple(context);
                         if (user == null) {
                           return;
                         }
-                        logFirebaseEvent('Button-Backend-Call');
 
                         final usersUpdateData = createUsersRecordData(
                           userType: widget.userType,
@@ -253,8 +231,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                         children: [
                           FFButtonWidget(
                             onPressed: () async {
-                              logFirebaseEvent('Button-ON_TAP');
-                              logFirebaseEvent('Button-Set-App-Language');
                               setAppLanguage(context, 'en');
                             },
                             text: 'English',
@@ -277,8 +253,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                           ),
                           FFButtonWidget(
                             onPressed: () async {
-                              logFirebaseEvent('Button-ON_TAP');
-                              logFirebaseEvent('Button-Set-App-Language');
                               setAppLanguage(context, 'hi');
                             },
                             text: 'Hindi',
