@@ -153,6 +153,7 @@ class _ProductListingWidgetState extends State<ProductListingWidget> {
                                 getCurrentTimestamp,
                                 functions.toJSON(FFAppState().keys.toList(),
                                     FFAppState().values.toList()),
+                                currentUserUid,
                               );
 
                               final blocksCreateData = {
@@ -161,6 +162,7 @@ class _ProductListingWidgetState extends State<ProductListingWidget> {
                                   timestamp: getCurrentTimestamp,
                                   previousHash: '0',
                                   currentHash: genesisHash,
+                                  addedBy: currentUserUid,
                                 ),
                                 'data_keys': ['0'],
                                 'data_values': ['0'],

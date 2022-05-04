@@ -33,6 +33,10 @@ abstract class BlocksRecord
   String get currentHash;
 
   @nullable
+  @BuiltValueField(wireName: 'added_by')
+  String get addedBy;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -41,7 +45,8 @@ abstract class BlocksRecord
     ..dataKeys = ListBuilder()
     ..dataValues = ListBuilder()
     ..previousHash = ''
-    ..currentHash = '';
+    ..currentHash = ''
+    ..addedBy = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('blocks');
@@ -69,6 +74,7 @@ Map<String, dynamic> createBlocksRecordData({
   DateTime timestamp,
   String previousHash,
   String currentHash,
+  String addedBy,
 }) =>
     serializers.toFirestore(
         BlocksRecord.serializer,
@@ -78,4 +84,5 @@ Map<String, dynamic> createBlocksRecordData({
           ..dataKeys = null
           ..dataValues = null
           ..previousHash = previousHash
-          ..currentHash = currentHash));
+          ..currentHash = currentHash
+          ..addedBy = addedBy));

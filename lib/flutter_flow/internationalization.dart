@@ -64,15 +64,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Other',
       'hi': 'प्रमाणकर्ता',
     },
-    '23r8tsg1': {
+    'pmcsz631': {
       'en': 'Select App Language:',
       'hi': '',
     },
-    'zwsytv57': {
+    'dnqcbgve': {
       'en': 'English',
       'hi': '',
     },
-    'xnqfk3jt': {
+    '2li7jpel': {
       'en': 'Hindi',
       'hi': '',
     },
@@ -91,19 +91,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Sign in with Apple',
       'hi': 'ऐप्पल के साथ साइन इन करें',
     },
-    'kk9kjxf4': {
+    'ooxwjhkn': {
       'en': 'Select App Language:',
       'hi': '',
     },
-    '7fz7cnli': {
+    '8vhjjfpo': {
       'en': 'English',
       'hi': '',
     },
-    'x24zaly7': {
+    '3jkj41jj': {
       'en': 'Hindi',
       'hi': '',
     },
-    'yppoke7o': {
+    'udjv4m27': {
       'en': 'Authenticate Yourself',
       'hi': '',
     },
@@ -114,119 +114,119 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ProductListing
   {
-    'l8lcnt2l': {
+    'dqoc327n': {
       'en': 'Product Listing',
       'hi': '',
     },
-    'yvelrbej': {
+    '34ceu565': {
       'en': 'Enter Product Name',
       'hi': '',
     },
-    '4fkt3vpc': {
+    'rflzlsur': {
       'en': 'Create New Product Blockchain',
       'hi': '',
     },
-    'hthoykyn': {
+    'xubue3wz': {
       'en': 'Field is required',
       'hi': '',
     },
-    '3arw0dix': {
+    'z6m5k28i': {
       'en': 'Home',
       'hi': '',
     },
   },
   // AddBlockPage
   {
-    'dx3l0c8j': {
+    'mrjpx9m5': {
       'en': 'Submit',
       'hi': '',
     },
-    '5ky6tx5x': {
+    'mynah6g3': {
       'en': 'Product ID: ',
       'hi': '',
     },
-    'pthzjx3e': {
+    'npp1jzr2': {
       'en': 'Key',
       'hi': '',
     },
-    'ej32etnl': {
+    '8cwlmf6v': {
       'en': 'Value',
       'hi': '',
     },
-    'cdrp9skl': {
+    '5csnqarf': {
       'en': 'Field is required',
       'hi': '',
     },
-    'y8okqapp': {
+    'unbkwhhu': {
       'en': 'Field is required',
       'hi': '',
     },
-    '2q4g0tlv': {
+    'iathuzoq': {
       'en': 'Add New Data Field',
       'hi': '',
     },
-    'jnwcvsf7': {
+    'iq9oi5jf': {
       'en': 'Page Title',
       'hi': '',
     },
-    '20it0cck': {
+    't4va6bl3': {
       'en': 'Home',
       'hi': '',
     },
   },
   // ManageProduct
   {
-    'j5481wve': {
+    '0qonh2wa': {
       'en': 'Enter UID',
       'hi': '',
     },
-    'bbgjfik0': {
+    '0bqqjoa6': {
       'en': 'Add Entity',
       'hi': '',
     },
-    '0t4lfqvo': {
+    'frf3w64q': {
       'en': 'Add Block',
       'hi': '',
     },
-    'cqs5cjl6': {
+    'ekpjx914': {
       'en': 'Validate SupplyChain',
       'hi': '',
     },
-    'jxrhxtf7': {
+    '9t4dmlxz': {
       'en': 'View SupplyChain Data',
       'hi': '',
     },
-    'qvksgvw1': {
+    '99dt5xdy': {
       'en': 'Delete Product',
       'hi': '',
     },
-    'bck114m5': {
+    '7f4f2rfq': {
       'en': 'Manage Product',
       'hi': '',
     },
-    'y49vkfon': {
+    '7v48av7u': {
       'en': 'Home',
       'hi': '',
     },
   },
   // BlockValidityCheck
   {
-    '6kfb5pn2': {
+    'h1u4aptj': {
       'en': 'Validity Check',
       'hi': '',
     },
-    '4s17zrkj': {
+    '1m2rn83a': {
       'en': 'Home',
       'hi': '',
     },
   },
   // BlockDataViewer
   {
-    'tuaq6s9q': {
+    '60uwng1u': {
       'en': 'Data Viewer',
       'hi': '',
     },
-    'p3ys0tyg': {
+    '7m35lwxt': {
       'en': 'Home',
       'hi': '',
     },

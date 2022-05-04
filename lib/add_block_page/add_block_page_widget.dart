@@ -143,6 +143,7 @@ class _AddBlockPageWidgetState extends State<AddBlockPageWidget> {
                                     getCurrentTimestamp,
                                     functions.toJSON(FFAppState().keys.toList(),
                                         FFAppState().values.toList()),
+                                    currentUserUid,
                                   );
 
                                   final blocksCreateData = {
@@ -154,6 +155,7 @@ class _AddBlockPageWidgetState extends State<AddBlockPageWidget> {
                                       previousHash:
                                           buttonBlocksRecord.currentHash,
                                       currentHash: currentBlockHash,
+                                      addedBy: currentUserUid,
                                     ),
                                     'data_keys': FFAppState().keys,
                                     'data_values': FFAppState().values,

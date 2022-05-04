@@ -14,9 +14,11 @@ Future<String> sHA256Calculate(
   String previousHash,
   DateTime timestamp,
   dynamic jsonData,
+  String addedBy,
 ) async {
   // Add your function code here!
-  List<int> bytes = utf8.encode("$index$previousHash$timestamp$jsonData");
+  List<int> bytes =
+      utf8.encode("$index$previousHash$timestamp$jsonData$addedBy");
   String hash = sha256.convert(bytes).toString();
   return hash;
 }
